@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet>
+        <servlet-name>DepartmnetView</servlet-name>
+        <servlet-class>controller.test</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Session</servlet-name>
+        <servlet-class>controller.staff.SessionController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Attendance</servlet-name>
+        <servlet-class>controller.lecturer.AttendanceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TimTable</servlet-name>
+        <servlet-class>controller.lecturer.TimatableController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DepartmnetView</servlet-name>
+        <url-pattern>/test/view</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Session</servlet-name>
+        <url-pattern>/staff/session</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Attendance</servlet-name>
+        <url-pattern>/lecturer/attendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimTable</servlet-name>
+        <url-pattern>/lecturer/timetable</url-pattern>
+    </servlet-mapping>
+</web-app>
