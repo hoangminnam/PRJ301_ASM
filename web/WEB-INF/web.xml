@@ -16,6 +16,10 @@
         <servlet-name>TimTable</servlet-name>
         <servlet-class>controller.lecturer.TimatableController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TimeTable_V2</servlet-name>
+        <servlet-class>controller.lecturer.Timetable</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DepartmnetView</servlet-name>
         <url-pattern>/test/view</url-pattern>
@@ -31,5 +35,9 @@
     <servlet-mapping>
         <servlet-name>TimTable</servlet-name>
         <url-pattern>/lecturer/timetable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimeTable_V2</servlet-name>
+        <url-pattern>/lecturer/time</url-pattern>
     </servlet-mapping>
 </web-app>

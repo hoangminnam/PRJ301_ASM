@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/model/Lecturer.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/controller/lecturer/Timetable.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/dal/DBcontext.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/dal/GroupDBContext.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/controller/lecturer/AttendanceController.java</file>
@@ -16,6 +17,7 @@
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/controller/InsertData.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/web/lecturer/timetable.jsp</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/dal/AttendanceDBContext.java</file>
+            <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/getDate/GetDateTime.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/dal/StudentDBContext.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/src/java/model/Session.java</file>
             <file>file:/C:/Users/hoang/OneDrive/Máy%20tính/test/PRJ/test/web/lecturer/attendance.jsp</file>
