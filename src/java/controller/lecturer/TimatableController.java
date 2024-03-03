@@ -33,8 +33,8 @@ public class TimatableController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String raw_from = req.getParameter("from");
-        String raw_to = req.getParameter("to");
+        String raw_from = req.getParameter("dateFrom");
+        String raw_to = req.getParameter("dateTo");
         java.sql.Date from = null;
         java.sql.Date to = null;
         
