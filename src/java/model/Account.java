@@ -5,6 +5,8 @@
 
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author hoang
@@ -12,13 +14,17 @@ package model;
 public class Account {
     private String username;
     private String password;
-
-    public Account(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+    private ArrayList<Feature> features;
+    private GroupAccess g_ac;
 
     public Account() {
+    }
+
+    public Account(String username, String password, ArrayList<Feature> features, GroupAccess g_ac) {
+        this.username = username;
+        this.password = password;
+        this.features = features;
+        this.g_ac = g_ac;
     }
 
     public String getUsername() {
@@ -35,5 +41,21 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public ArrayList<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(ArrayList<Feature> features) {
+        this.features = features;
+    }
+
+    public GroupAccess getG_ac() {
+        return g_ac;
+    }
+
+    public void setG_ac(GroupAccess g_ac) {
+        this.g_ac = g_ac;
     }
 }
