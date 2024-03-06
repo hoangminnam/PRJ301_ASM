@@ -10,13 +10,44 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+            <style>
+        form {
+            width: 300px;
+            margin: 0 auto; /* căn giữa form */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box; /* đảm bảo padding và border không làm thay đổi kích thước */
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="header.jsp"%>
         <form action="login" method="POST">
             Username: <input type="text" name="username"/> <br/>
             Password: <input type="password" name="password"/> <br/>
             <input type="submit" value="Login"/>
         </form>
+        
+        
     </body>
 </html>

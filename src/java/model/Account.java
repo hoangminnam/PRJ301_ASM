@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Account {
     private String username;
     private String password;
-    private ArrayList<Feature> features;
+    private ArrayList<Feature> features = new ArrayList<>();
     private GroupAccess g_ac;
 
     public Account() {

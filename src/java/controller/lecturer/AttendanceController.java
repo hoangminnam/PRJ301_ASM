@@ -5,14 +5,15 @@
 
 package controller.lecturer;
 
+import controller.authentication.BaseRequiredAuthenticationController;
 import dal.AttendanceDBContext;
 import dal.StudentDBContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import model.Account;
 import model.Attendance;
 import model.Student;
 
@@ -20,10 +21,10 @@ import model.Student;
  *
  * @author hoang
  */
-public class AttendanceController extends HttpServlet{
+public class AttendanceController extends BaseRequiredAuthenticationController{
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account ac) throws ServletException, IOException {
         AttendanceDBContext aDB = new AttendanceDBContext();
         ArrayList<Attendance> listA = aDB.getListAttendance(0);
         for (Attendance a : listA) {
@@ -33,7 +34,7 @@ public class AttendanceController extends HttpServlet{
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp, Account ac) throws ServletException, IOException {
         AttendanceDBContext aDB = new AttendanceDBContext();
         ArrayList<Attendance> listA = aDB.getListAttendance(0);
         
