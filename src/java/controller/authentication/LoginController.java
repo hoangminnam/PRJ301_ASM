@@ -35,8 +35,8 @@ public class LoginController extends HttpServlet{
             
             Cookie c_user = new Cookie("username", username);
             Cookie c_pass = new Cookie("password", password);
-            c_user.setMaxAge(20*60);
-            c_pass.setMaxAge(20*60);
+            c_user.setMaxAge(60*60);
+            c_pass.setMaxAge(60*60);
             resp.addCookie(c_pass);
             resp.addCookie(c_user);
             

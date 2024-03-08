@@ -18,7 +18,7 @@ import model.Feature;
  *
  * @author sonnt
  */
-public abstract class BaseRequiredAuthenticationController extends HttpServlet {
+public abstract class AuthenticationAndAuthenrizationController extends HttpServlet {
 
     private Account getAuthenticatedAccount(HttpServletRequest req) {
         Account account = (Account) req.getSession().getAttribute("account");

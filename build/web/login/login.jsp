@@ -28,7 +28,7 @@
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 3px;
-            box-sizing: border-box; /* đảm bảo padding và border không làm thay đổi kích thước */
+            box-sizing: border-box;
         }
         input[type="submit"] {
             background-color: #007bff;
@@ -41,13 +41,13 @@
     </style>
     </head>
     <body>
-        <%@include file="header.jsp"%>
+        <%@include file="../header_footer/header.jsp"%>
         <form action="login" method="POST">
             Username: <input type="text" name="username"/> <br/>
             Password: <input type="password" name="password"/> <br/>
             <input type="submit" value="Login"/>
         </form>
-        
+        <%@include file="../header_footer/footer.jsp"%>
         
     </body>
 </html>

@@ -5,7 +5,7 @@
 
 package controller.lecturer;
 
-import controller.authentication.BaseRequiredAuthenticationController;
+import controller.authentication.AuthenticationAndAuthenrizationController;
 import dal.AttendanceDBContext;
 import dal.StudentDBContext;
 import jakarta.servlet.ServletException;
@@ -21,7 +21,7 @@ import model.Student;
  *
  * @author hoang
  */
-public class AttendanceController extends BaseRequiredAuthenticationController{
+public class AttendanceController extends AuthenticationAndAuthenrizationController{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account ac) throws ServletException, IOException {
