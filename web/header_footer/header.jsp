@@ -10,7 +10,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
         <style>
             body {
                 text-align: center;
@@ -51,6 +50,9 @@
                 text-decoration: none;
                 padding-left: 10px;
             }
+            #home{
+                float: left;
+            }
         </style>
     </head>
     <body>
@@ -67,8 +69,9 @@
             </div>
 
             <div class="navbar">
+                <a href="../login" id="home">Home</a>
                 <c:if test="${not empty sessionScope.account}">
-                    <form action="logout.jsp" method="post" id="logout">
+                    <form action="../logout" method="POST" id="logout">
                         <input type="submit" value="Logout">
                     </form>
                     <a href="#">${sessionScope.account.username}</a>

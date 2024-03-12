@@ -5,6 +5,7 @@
 
 package controller.lecturer;
 
+import controller.authentication.AuthenticationAndAuthenrizationController;
 import dal.SessionDBContext;
 import dal.TimeSlotDBContext;
 import getDate.DateTimeHelper;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import model.Account;
 import model.Session;
 import model.TimeSlot;
 
@@ -25,14 +27,14 @@ import model.TimeSlot;
  *
  * @author hoang
  */
-public class TimatableController extends HttpServlet{
+public class TimatableController extends AuthenticationAndAuthenrizationController{
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
         String raw_from = req.getParameter("dateFrom");
         String raw_to = req.getParameter("dateTo");
         java.sql.Date from = null;

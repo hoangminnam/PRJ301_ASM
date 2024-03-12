@@ -43,6 +43,7 @@ public class AccountDBcontext extends DBcontext{
                 a.setPassword(rs.getString("password"));
                }
                int g_acid = rs.getInt("g_acid");
+               // 1 account can only access one group
                if(g_acid != 0 && g_ac == null){
                    g_ac = new GroupAccess();
                    g_ac.setG_acid(rs.getInt("g_acid"));

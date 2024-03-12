@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package controller.authentication;
 
 import dal.AccountDBcontext;
@@ -19,29 +18,35 @@ import model.Account;
  *
  * @author hoang
  */
-public class LoginController extends HttpServlet{
+public class LoginController extends HttpServlet {
+
+    private void websiteRedirection(Account a, HttpServletResponse resp) throws ServletException, IOException {
+        if (a.getG_ac().getG_acid() == 1) {
+            resp.sendRedirect("/student/HomeStudent.jsp");
+        } else if (a.getG_ac().getG_acid() == 2) {
+            resp.sendRedirect("lecturer/home");
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        
+
         AccountDBcontext acDB = new AccountDBcontext();
         Account a = acDB.getAccount(username, password);
-        
-        if(a != null){
+
+        if (a != null) {
             HttpSession session = req.getSession();
             session.setAttribute("account", a);
-            
+
             Cookie c_user = new Cookie("username", username);
             Cookie c_pass = new Cookie("password", password);
-            c_user.setMaxAge(60*60);
-            c_pass.setMaxAge(60*60);
+            c_user.setMaxAge(60 * 60);
+            c_pass.setMaxAge(60 * 60);
             resp.addCookie(c_pass);
             resp.addCookie(c_user);
-            
-            resp.getWriter().println("Login Successfull!");
-            resp.getWriter().println(req.getServletPath());
+            websiteRedirection(a, resp);
         } else {
             resp.getWriter().println("Access Denied");
         }
@@ -49,6 +54,12 @@ public class LoginController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("login/login.jsp").forward(req, resp);
+        //If the user is still in a session, go to the home page
+        if (req.getSession().getAttribute("account") != null) {
+            Account a = (Account) req.getSession().getAttribute("account");
+            websiteRedirection(a, resp);
+        } else {
+            req.getRequestDispatcher("login/login.jsp").forward(req, resp);
+        }
     }
 }

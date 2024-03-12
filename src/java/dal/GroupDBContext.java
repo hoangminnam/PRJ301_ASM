@@ -16,23 +16,23 @@ import model.Group;
  * @author hoang
  */
 public class GroupDBContext extends DBcontext{
-    public ArrayList<Group> getGroup(){
-        ArrayList<Group> listG = new ArrayList<>();
-        String sql = "SELECT * FROM [Group]";
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {                
-                Group g = new Group();
-                g.setID(rs.getInt("ID"));
-                g.setName(rs.getString("Name"));
-                g.setSubjectID(rs.getString("SubjectID"));
-                g.setPIC(rs.getInt("PIC"));
-                listG.add(g);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(GroupDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return listG;
-    }
+//    public ArrayList<Group> getGroup(){
+//        ArrayList<Group> listG = new ArrayList<>();
+//        String sql = "SELECT * FROM [Group]";
+//        try {
+//            PreparedStatement stm = connection.prepareStatement(sql);
+//            ResultSet rs = stm.executeQuery();
+//            while (rs.next()) {                
+//                Group g = new Group();
+//                g.setID(rs.getInt("ID"));
+//                g.setName(rs.getString("Name"));
+//                g.setSubjectID(rs.getString("SubjectID"));
+//                g.setPIC(rs.getInt("PIC"));
+//                listG.add(g);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(GroupDBContext.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return listG;
+//    }
 }

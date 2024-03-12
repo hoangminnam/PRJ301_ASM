@@ -12,16 +12,16 @@ package model;
 public class Group {
     private int ID;
     private String name;
-    private String subjectID;
+    private Subject sub;
     private int PIC;
 
     public Group() {
     }
 
-    public Group(int ID, String name, String subjectID, int PIC) {
+    public Group(int ID, String name, Subject sub, int PIC) {
         this.ID = ID;
         this.name = name;
-        this.subjectID = subjectID;
+        this.sub = sub;
         this.PIC = PIC;
     }
 
@@ -41,12 +41,12 @@ public class Group {
         this.name = name;
     }
 
-    public String getSubjectID() {
-        return subjectID;
+    public Subject getSub() {
+        return sub;
     }
 
-    public void setSubjectID(String subjectID) {
-        this.subjectID = subjectID;
+    public void setSub(Subject sub) {
+        this.sub = sub;
     }
 
     public int getPIC() {

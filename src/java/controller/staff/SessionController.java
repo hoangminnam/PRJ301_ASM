@@ -33,23 +33,23 @@ public class SessionController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GroupDBContext gDB = new GroupDBContext();
-        ArrayList<Group> listg = gDB.getGroup();
-        
-        LecturerDBContext lDB = new LecturerDBContext();
-        ArrayList<Lecturer> listL = lDB.getLecturer();
-        
-        RoomDBContext rDB = new RoomDBContext();
-        ArrayList<Room> listR = rDB.getRoom();
-        
-        TimeSlotDBContext tsDB  = new TimeSlotDBContext();
-        ArrayList<TimeSlot> listTimeSlot = tsDB.getListTimeSlot();
-        
-        req.setAttribute("listG", listg);
-        req.setAttribute("listL", listL);
-        req.setAttribute("listR", listR);
-        req.setAttribute("listTimeSlot", listTimeSlot);
-        req.getRequestDispatcher("insertSession.jsp").forward(req, resp);
+//        GroupDBContext gDB = new GroupDBContext();
+//        ArrayList<Group> listg = gDB.getGroup();
+//        
+//        LecturerDBContext lDB = new LecturerDBContext();
+//        ArrayList<Lecturer> listL = lDB.getLecturer();
+//        
+//        RoomDBContext rDB = new RoomDBContext();
+//        ArrayList<Room> listR = rDB.getRoom();
+//        
+//        TimeSlotDBContext tsDB  = new TimeSlotDBContext();
+//        ArrayList<TimeSlot> listTimeSlot = tsDB.getListTimeSlot();
+//        
+//        req.setAttribute("listG", listg);
+//        req.setAttribute("listL", listL);
+//        req.setAttribute("listR", listR);
+//        req.setAttribute("listTimeSlot", listTimeSlot);
+//        req.getRequestDispatcher("insertSession.jsp").forward(req, resp);
        //resp.getWriter().println(listg.get(0).getID());
     }
 
