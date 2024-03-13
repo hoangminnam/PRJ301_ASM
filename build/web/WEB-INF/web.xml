@@ -32,6 +32,18 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>controller.authentication.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeStudent</servlet-name>
+        <servlet-class>controller.student.HomeStudentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentTimeTable</servlet-name>
+        <servlet-class>controller.student.TimetableStudent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LessionToday</servlet-name>
+        <servlet-class>controller.lecturer.LessionToday</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DepartmnetView</servlet-name>
         <url-pattern>/test/view</url-pattern>
@@ -63,6 +75,18 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeStudent</servlet-name>
+        <url-pattern>/student/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentTimeTable</servlet-name>
+        <url-pattern>/student/timetable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LessionToday</servlet-name>
+        <url-pattern>/lecturer/lession_today</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>

@@ -52,13 +52,15 @@ public class SessionDBContext extends DBcontext{
     
     public ArrayList<Session> getListSession(int lid, Date from, Date to){
         ArrayList<Session> listSE = new  ArrayList<>();
-        String sql = "SELECT se.ID, se.isTaken, g.[Name], g.SubjectID, r.ID AS rid, t.TID, t.[time], se.[Date]\n"
+        String sql = "SELECT se.ID, se.isTaken, g.[Name], g.SubjectID,sub.[Name] AS subname, r.ID AS rid, t.TID, t.[time], se.[Date]\n"
                 + "FROM [Session] se\n"
                 + "INNER JOIN [Group] g ON se.GID = g.ID\n"
                 + "INNER JOIN Lecturer l ON se.LID = l.ID\n"
                 + "INNER JOIN Room r ON se.RoomID = R.ID\n"
                 + "INNER JOIN TimeSlot t ON t.TID = se.TID\n"
-                + "WHERE se.LID = ? AND se.[Date] >= ? AND se.[Date] <= ? ";
+                + "INNER JOIN Subject sub ON sub.ID = g.SubjectID\n"
+                + "WHERE se.LID = ? AND se.[Date] >= ? AND se.[Date] <= ? "
+                + " ORDER BY se.TID";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, lid);
@@ -76,6 +78,7 @@ public class SessionDBContext extends DBcontext{
                 Subject sub = new Subject();
                 Group g = new Group();
                 sub.setSubjectID(rs.getString("SubjectID"));
+                sub.setName(rs.getString("subname"));
                 g.setSub(sub);
                 g.setName(rs.getString("Name"));
                 s.setGroup(g);

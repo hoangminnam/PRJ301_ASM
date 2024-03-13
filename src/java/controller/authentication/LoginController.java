@@ -22,7 +22,7 @@ public class LoginController extends HttpServlet {
 
     private void websiteRedirection(Account a, HttpServletResponse resp) throws ServletException, IOException {
         if (a.getG_ac().getG_acid() == 1) {
-            resp.sendRedirect("/student/HomeStudent.jsp");
+            resp.sendRedirect("student/home");
         } else if (a.getG_ac().getG_acid() == 2) {
             resp.sendRedirect("lecturer/home");
         }

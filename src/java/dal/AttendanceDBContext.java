@@ -28,8 +28,8 @@ public class AttendanceDBContext extends DBcontext {
                 + "INNER JOIN [Group] g ON se.GID = g.ID\n"
                 + "INNER JOIN Enrollments e  ON e.gid = g.ID\n"
                 + "INNER JOIN Student s ON s.ID = e.sid\n"
-                + "LEFT JOIN Attendance a ON se.ID = a.SesID\n"
-                + "WHERE se.ID = ? AND se.LID = ? AND a.StudentID = s.ID ";
+                + "LEFT JOIN Attendance a ON se.ID = a.SesID AND a.StudentID = s.ID \n"
+                + "WHERE se.ID = ? AND se.LID = ? ";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, leid);

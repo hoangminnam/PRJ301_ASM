@@ -28,6 +28,12 @@
                 align-items: center;
                 margin: 0;
             }
+            a.disabled {
+                pointer-events: none;
+                color: gray; 
+                text-decoration: none; 
+            }
+
         </style>
     </head>
     <body>
@@ -60,17 +66,16 @@
                         <td>
                             <c:forEach items="${requestScope.lessions}" var="se">
                                 <c:if test="${se.date eq d and se.timeSlot.id eq slot.id}">
-                                    <a href="attendance?leid=${se.seid}" style="text-decoration: none">
+                                    <a href="attendance?leid=${se.seid}" style="text-decoration: none"  <c:if test="${se.date < currentDate}">class="disabled"</c:if>>
                                         ${se.group.name}-${se.group.sub.subjectID}-<br> at ${se.room.id}
                                         <c:if test="${se.date < currentDate}">
                                             <c:if test="${se.isTaken == false}"><p style="color: red">Absent</p></c:if>
-                                            <c:if test="${se.isTaken == true}"><p style="color: greenyellow">Present</p></c:if>
+                                            <c:if test="${se.isTaken == true}"><p style="color: green">Present</p></c:if>
                                         </c:if>
                                         <c:if test="${se.date >= currentDate}">
                                             <c:if test="${se.isTaken == false}"><p style="color: red">(Not yet)</p><p style="color: white; background: green">${se.timeSlot.time}</p></c:if>
-                                            <c:if test="${se.isTaken == true}"><p style="color: greenyellow">Present</p></c:if>
+                                            <c:if test="${se.isTaken == true}"><p style="color: green">Present</p></c:if>
                                         </c:if>
-
                                     </a>
                                 </c:if>
                             </c:forEach>
@@ -79,7 +84,6 @@
                 </tr>
             </c:forEach>
         </table>
-
 
         <script>
             document.getElementById("dateFrom").addEventListener("change", function () {

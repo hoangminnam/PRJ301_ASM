@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package controller.lecturer;
 
 import controller.authentication.AuthenticationAndAuthenrizationController;
@@ -21,14 +20,11 @@ import model.Account;
 import model.Session;
 import model.TimeSlot;
 
-
-
-
 /**
  *
  * @author hoang
  */
-public class TimatableController extends AuthenticationAndAuthenrizationController{
+public class TimatableController extends AuthenticationAndAuthenrizationController {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
@@ -40,38 +36,32 @@ public class TimatableController extends AuthenticationAndAuthenrizationControll
         String raw_to = req.getParameter("dateTo");
         java.sql.Date from = null;
         java.sql.Date to = null;
-        
+
         Date today = new Date();
-        if(raw_from ==null)
-        {
+        if (raw_from == null) {
             from = DateTimeHelper.convertUtilDateToSqlDate(DateTimeHelper.getWeekStart(today));
-        }
-        else
-        {
+        } else {
             from = java.sql.Date.valueOf(raw_from);
         }
-        
-        if(raw_to ==null)
-        {
-            to =DateTimeHelper.convertUtilDateToSqlDate(
-                    DateTimeHelper.addDaysToDate(DateTimeHelper.getWeekStart(today),6));
-        }
-        else
-        {
+
+        if (raw_to == null) {
+            to = DateTimeHelper.convertUtilDateToSqlDate(
+                    DateTimeHelper.addDaysToDate(DateTimeHelper.getWeekStart(today), 6));
+        } else {
             to = java.sql.Date.valueOf(raw_to);
         }
-        
+
         ArrayList<java.sql.Date> dates = DateTimeHelper.getListBetween(
-                DateTimeHelper.convertSqlDateToUtilDate(from), 
+                DateTimeHelper.convertSqlDateToUtilDate(from),
                 DateTimeHelper.convertSqlDateToUtilDate(to));
-        
+
         TimeSlotDBContext slotDB = new TimeSlotDBContext();
         ArrayList<TimeSlot> slots = slotDB.getListTimeSlot();
-                LecturerDBContext lDB = new LecturerDBContext();
+        LecturerDBContext lDB = new LecturerDBContext();
         int lid = lDB.getLecturerIDByUsername(account.getUsername());
         SessionDBContext lessDB = new SessionDBContext();
         ArrayList<Session> lessions = lessDB.getListSession(lid, from, to);
-        
+
         req.setAttribute("slots", slots);
         req.setAttribute("dates", dates);
         req.setAttribute("from", from);

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package controller.lecturer;
+package controller.student;
 
 import controller.authentication.AuthenticationAndAuthenrizationController;
 import jakarta.servlet.ServletException;
@@ -16,16 +16,15 @@ import model.Account;
  *
  * @author hoang
  */
-public class HomeController extends AuthenticationAndAuthenrizationController{
+public class TimetableStudent extends AuthenticationAndAuthenrizationController{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
-        req.getRequestDispatcher("homeLecturer.jsp").forward(req, resp);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
-        req.getRequestDispatcher("homeLecturer.jsp").forward(req, resp);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }
