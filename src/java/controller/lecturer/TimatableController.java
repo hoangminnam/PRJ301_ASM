@@ -6,6 +6,7 @@
 package controller.lecturer;
 
 import controller.authentication.AuthenticationAndAuthenrizationController;
+import dal.LecturerDBContext;
 import dal.SessionDBContext;
 import dal.TimeSlotDBContext;
 import getDate.DateTimeHelper;
@@ -66,9 +67,10 @@ public class TimatableController extends AuthenticationAndAuthenrizationControll
         
         TimeSlotDBContext slotDB = new TimeSlotDBContext();
         ArrayList<TimeSlot> slots = slotDB.getListTimeSlot();
-        
+                LecturerDBContext lDB = new LecturerDBContext();
+        int lid = lDB.getLecturerIDByUsername(account.getUsername());
         SessionDBContext lessDB = new SessionDBContext();
-        ArrayList<Session> lessions = lessDB.getListSession(0, from, to);
+        ArrayList<Session> lessions = lessDB.getListSession(lid, from, to);
         
         req.setAttribute("slots", slots);
         req.setAttribute("dates", dates);

@@ -60,7 +60,7 @@
                         <td>
                             <c:forEach items="${requestScope.lessions}" var="se">
                                 <c:if test="${se.date eq d and se.timeSlot.id eq slot.id}">
-                                    <a href="attendance" style="text-decoration: none">
+                                    <a href="attendance?leid=${se.seid}" style="text-decoration: none">
                                         ${se.group.name}-${se.group.sub.subjectID}-<br> at ${se.room.id}
                                         <c:if test="${se.date < currentDate}">
                                             <c:if test="${se.isTaken == false}"><p style="color: red">Absent</p></c:if>

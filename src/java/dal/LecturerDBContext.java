@@ -18,6 +18,23 @@ import model.Lecturer;
  * @author hoang
  */
 public class LecturerDBContext extends DBcontext{
+    public int getLecturerIDByUsername(String username) {
+        int lid = 0;
+        String sql = "SELECT ID FROM Lecturer\n"
+                + "WHERE Email = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                lid = rs.getInt("ID");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lid;
+    }
+    
     public ArrayList<Lecturer> getLecturer(){
         ArrayList<Lecturer> listL = new ArrayList<>();
         String sql ="SELECT*FROM Lecturer";

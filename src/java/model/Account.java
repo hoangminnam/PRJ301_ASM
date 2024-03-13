@@ -14,16 +14,17 @@ import java.util.ArrayList;
 public class Account {
     private String username;
     private String password;
+    private String displayName;
     private ArrayList<Feature> features = new ArrayList<>();
     private GroupAccess g_ac;
 
     public Account() {
     }
 
-    public Account(String username, String password, ArrayList<Feature> features, GroupAccess g_ac) {
+    public Account(String username, String password, String displayName, GroupAccess g_ac) {
         this.username = username;
         this.password = password;
-        this.features = features;
+        this.displayName = displayName;
         this.g_ac = g_ac;
     }
 
@@ -41,6 +42,14 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public ArrayList<Feature> getFeatures() {

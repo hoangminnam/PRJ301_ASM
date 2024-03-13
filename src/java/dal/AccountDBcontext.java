@@ -22,7 +22,7 @@ import model.GroupAccess;
 public class AccountDBcontext extends DBcontext{
     public Account getAccount(String username, String password){
        
-        String sql = "SELECT a.[username], a.[password], g_ac.g_acid, g_ac.g_acName, f.fid, f.[url]\n"
+        String sql = "SELECT a.[username], a.[password], a.displayName, g_ac.g_acid, g_ac.g_acName, f.fid, f.[url]\n"
                 + "FROM Account a\n"
                 + "INNER JOIN GroupAccount ga ON a.username = ga.username\n"
                 + "INNER JOIN GroupAccess g_ac ON ga.g_acid = g_ac.g_acid\n"
@@ -41,6 +41,7 @@ public class AccountDBcontext extends DBcontext{
                 a = new Account();
                 a.setUsername(rs.getString("username"));
                 a.setPassword(rs.getString("password"));
+                a.setDisplayName(rs.getString("displayName"));
                }
                int g_acid = rs.getInt("g_acid");
                // 1 account can only access one group

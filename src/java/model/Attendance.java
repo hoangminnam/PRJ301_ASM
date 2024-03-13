@@ -5,36 +5,39 @@
 
 package model;
 
-import java.sql.*;
+import java.util.Date;
+
+
 /**
  *
  * @author hoang
  */
 public class Attendance {
+    private int aid;
     private int sesID;
     private Student student;
     private boolean isPresent;
     private String description;
-    private Lecturer l;
-
+    private Date datetime;
+    
     public Attendance() {
     }
 
-    public Attendance(int sesID, Student student, boolean isPresent, String description, Lecturer l) {
+    public Attendance(int aid, int sesID, Student student, boolean isPresent, String description, Date datetime) {
+        this.aid = aid;
         this.sesID = sesID;
         this.student = student;
         this.isPresent = isPresent;
         this.description = description;
-        this.l = l;
-    }
-    
-
-    public Student getStudent() {
-        return student;
+        this.datetime = datetime;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
     }
 
 
@@ -44,6 +47,14 @@ public class Attendance {
 
     public void setSesID(int sesID) {
         this.sesID = sesID;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public boolean isIsPresent() {
@@ -62,11 +73,11 @@ public class Attendance {
         this.description = description;
     }
 
-    public Lecturer getL() {
-        return l;
+    public Date getDatetime() {
+        return datetime;
     }
 
-    public void setL(Lecturer l) {
-        this.l = l;
+    public void setDatetime(Date datetime) {
+        this.datetime = datetime;
     }
 }

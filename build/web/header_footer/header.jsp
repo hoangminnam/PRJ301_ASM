@@ -69,12 +69,15 @@
             </div>
 
             <div class="navbar">
-                <a href="../login" id="home">Home</a>
+                <c:if test="${not empty sessionScope.account}">
+                    <a href="../login" id="home">Home</a>
+                </c:if>
+                
                 <c:if test="${not empty sessionScope.account}">
                     <form action="../logout" method="POST" id="logout">
                         <input type="submit" value="Logout">
                     </form>
-                    <a href="#">${sessionScope.account.username}</a>
+                    <a href="#">${sessionScope.account.displayName}</a>
                 </c:if>
             </div>
 
