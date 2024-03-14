@@ -13,7 +13,7 @@
     </head>
     <body>
         <%@include file="../header_footer/header.jsp"%>
-        <h1>Hello World!</h1>
+        <a href="timetable" style="text-decoration: none; margin-right: 5px">Timatbale</a>|
         <%@include file="../header_footer/footer.jsp"%>
     </body>
 </html>

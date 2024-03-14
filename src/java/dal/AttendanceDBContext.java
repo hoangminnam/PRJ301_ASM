@@ -11,14 +11,62 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Attendance;
+import model.Group;
+import model.Room;
 import model.Session;
 import model.Student;
+import model.Subject;
+import model.TimeSlot;
 
 /**
  *
  * @author hoang
  */
 public class AttendanceDBContext extends DBcontext {
+
+    public ArrayList<Attendance> getListAttendanceByStudentID(int sid) {
+        ArrayList<Attendance> listA = new ArrayList<>();
+
+        String sql = "SELECT g.[Name] AS gname, g.SubjectID, se.RoomID, se.TID, ts.[Time] ,se.[Date], a.isPresent\n"
+                + "                FROM [Session] se \n"
+                + "                INNER JOIN [Group] g ON se.GID = g.ID\n"
+                + "               INNER JOIN Enrollments e  ON e.gid = g.ID\n"
+                + "                INNER JOIN Student s ON s.ID = e.sid\n"
+                + "				INNER JOIN TimeSlot ts ON ts.TID = se.TID\n"
+                + "               LEFT JOIN Attendance a ON se.ID = a.SesID AND a.StudentID = s.ID\n"
+                + "              WHERE s.ID = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, sid);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Subject sub = new Subject();
+                sub.setSubjectID(rs.getString("SubjectID"));
+                Group g = new Group();
+                g.setName(rs.getString("gname"));
+                g.setSub(sub);
+
+                Room r = new Room();
+                r.setId(rs.getString("RoomID"));
+                TimeSlot ts = new TimeSlot();
+                ts.setId(rs.getInt("TID"));
+                ts.setTime(rs.getString("Time"));
+                Session se = new Session();
+                se.setGroup(g);
+                se.setRoom(r);
+                se.setTimeSlot(ts);
+                se.setDate(rs.getDate("Date"));
+                Attendance a = new Attendance();
+                a.setSe(se);
+                a.setIsPresent(rs.getBoolean("isPresent"));
+                listA.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listA;
+    }
 
     public ArrayList<Attendance> getListAttendanceByLession(int leid, int lid) {
         ArrayList<Attendance> listA = new ArrayList<>();
@@ -43,7 +91,8 @@ public class AttendanceDBContext extends DBcontext {
                 s.setName(rs.getString("sname"));
                 a.setStudent(s);
                 se.setSeid(leid);
-                a.setSesID(leid);
+                se.setSeid(leid);
+                a.setSe(se);
 
                 a.setAid(rs.getInt("aid"));
                 if (a.getAid() != 0) {
@@ -62,8 +111,8 @@ public class AttendanceDBContext extends DBcontext {
     public void takeAttendances(int leid, ArrayList<Attendance> atts) {
         try {
             connection.setAutoCommit(false);
-            String sql_remove_atts = "DELETE FROM [Attendance]\n" +
-"      WHERE SesID = ?";
+            String sql_remove_atts = "DELETE FROM [Attendance]\n"
+                    + "      WHERE SesID = ?";
             PreparedStatement stm_remove_atts = connection.prepareStatement(sql_remove_atts);
             stm_remove_atts.setInt(1, leid);
             stm_remove_atts.executeUpdate();

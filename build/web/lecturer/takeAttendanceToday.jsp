@@ -33,6 +33,7 @@
                 <th>SubjectNAME</th>
                 <th>SubjectID</th>
                 <th>Group</th>
+                <th>Slot</th>
                 <th>Attendance</th>
             </tr>
             <c:set var="no" value="0"/>
@@ -42,6 +43,7 @@
                     <td>${l.group.sub.name}</td>
                     <td>${l.group.sub.subjectID}</td>
                     <td>${l.group.name}</td>
+                    <td>${l.timeSlot.id}</td>
                     <td> 
                         <c:if test="${l.isTaken == true}">
                             <a href="attendance?leid=${l.seid}"> Edit </a>

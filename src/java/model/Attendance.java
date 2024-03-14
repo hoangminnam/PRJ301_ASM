@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Attendance {
     private int aid;
-    private int sesID;
+    private Session se;
     private Student student;
     private boolean isPresent;
     private String description;
@@ -23,30 +23,29 @@ public class Attendance {
     public Attendance() {
     }
 
-    public Attendance(int aid, int sesID, Student student, boolean isPresent, String description, Date datetime) {
+    public Attendance(int aid, Session se, Student student, boolean isPresent, String description, Date datetime) {
         this.aid = aid;
-        this.sesID = sesID;
+        this.se = se;
         this.student = student;
         this.isPresent = isPresent;
         this.description = description;
         this.datetime = datetime;
     }
 
+    public Session getSe() {
+        return se;
+    }
+
+    public void setSe(Session se) {
+        this.se = se;
+    }
+    
     public int getAid() {
         return aid;
     }
 
     public void setAid(int aid) {
         this.aid = aid;
-    }
-
-
-    public int getSesID() {
-        return sesID;
-    }
-
-    public void setSesID(int sesID) {
-        this.sesID = sesID;
     }
 
     public Student getStudent() {

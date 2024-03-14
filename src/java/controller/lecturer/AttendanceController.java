@@ -33,10 +33,11 @@ public class AttendanceController extends AuthenticationAndAuthenrizationControl
         SessionDBContext db = new SessionDBContext();
         ArrayList<Student> students = db.getStudentsByLession(seid,lid);
                 ArrayList<Attendance> atts = new ArrayList<>();
-
+                Session lession = new Session();
+        lession.setSeid(seid);
         for (Student student : students) {
             Attendance a = new Attendance();
-            a.setSesID(seid);
+            a.setSe(lession);
             a.setStudent(student);
             a.setDescription(req.getParameter("desription_" + student.getId()));
             a.setIsPresent(req.getParameter("isPresent_" + student.getId()).equals("yes"));

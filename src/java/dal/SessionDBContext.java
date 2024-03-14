@@ -23,7 +23,6 @@ import model.TimeSlot;
  */
 public class SessionDBContext extends DBcontext{
     
-    
     public ArrayList<Student> getStudentsByLession(int seid, int lid) {
         ArrayList<Student> students = new ArrayList<>();
         try {

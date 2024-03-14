@@ -51,16 +51,15 @@ public class StudentDBContext extends DBcontext{
         return id;
     }
     
-    public Student getStudentByID(int id){
+    public Student getStudentIDByUserName(String username){
         Student s = new Student();
-        String sql ="SELECT ID, [Name] FROM Student WHERE ID = ?";
+        String sql ="SELECT ID FROM Student WHERE Email = ?";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, id);
+            stm.setString(1, username);
             ResultSet rs = stm.executeQuery();
             if(rs.next()){
-                s.setId(id);
-                s.setName(rs.getString("Name"));
+                s.setId(rs.getInt("ID"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
