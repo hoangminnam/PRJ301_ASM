@@ -44,6 +44,10 @@
         <servlet-name>LessionToday</servlet-name>
         <servlet-class>controller.lecturer.LessionToday</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AttendanceReport</servlet-name>
+        <servlet-class>controller.student.AttendanceReportController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DepartmnetView</servlet-name>
         <url-pattern>/test/view</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>LessionToday</servlet-name>
         <url-pattern>/lecturer/lession_today</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AttendanceReport</servlet-name>
+        <url-pattern>/student/attendanceReport</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>

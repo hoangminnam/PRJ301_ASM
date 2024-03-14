@@ -18,11 +18,12 @@ public class Session {
     private TimeSlot timeSlot;
     private Date date;
     private boolean isTaken;
+    private Term term;
 
     public Session() {
     }
 
-    public Session(int seid, Group group, Lecturer lecturer, Room room, TimeSlot timeSlot, Date date, boolean isTaken) {
+    public Session(int seid, Group group, Lecturer lecturer, Room room, TimeSlot timeSlot, Date date, boolean isTaken, Term term) {
         this.seid = seid;
         this.group = group;
         this.lecturer = lecturer;
@@ -30,6 +31,15 @@ public class Session {
         this.timeSlot = timeSlot;
         this.date = date;
         this.isTaken = isTaken;
+        this.term = term;
+    }
+
+    public Term getTerm() {
+        return term;
+    }
+
+    public void setTerm(Term term) {
+        this.term = term;
     }
 
     public int getSeid() {
