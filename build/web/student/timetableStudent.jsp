@@ -67,7 +67,7 @@
                         <td>
                             <c:forEach items="${requestScope.listA}" var="a">
                                 <c:if test="${a.se.date eq d and a.se.timeSlot.id eq slot.id}">
-                                    <a href="url" style="text-decoration: none">
+                                    <a href="#" style="text-decoration: none">
                                         ${a.se.group.sub.subjectID}-<br> at ${a.se.room.id}
                                     <c:if test="${a.isPresent == false}"><p style="color: red">Absent</p></c:if>
                                     <c:if test="${a.isPresent == true}"><p style="color: green">Present</p></c:if>

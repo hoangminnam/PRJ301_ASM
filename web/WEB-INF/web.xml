@@ -48,6 +48,10 @@
         <servlet-name>AttendanceReport</servlet-name>
         <servlet-class>controller.student.AttendanceReportController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MarkReport</servlet-name>
+        <servlet-class>controller.student.MarkReport</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DepartmnetView</servlet-name>
         <url-pattern>/test/view</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>AttendanceReport</servlet-name>
         <url-pattern>/student/attendanceReport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MarkReport</servlet-name>
+        <url-pattern>/student/markreport</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>

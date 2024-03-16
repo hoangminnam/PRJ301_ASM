@@ -49,6 +49,7 @@ public class TermDBContext extends DBcontext {
         String sql = "SELECT tname FROM Term WHERE TermID = ?";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, tid);
             ResultSet rs = stm.executeQuery();
             if(rs.next()){
                 t.setTname(rs.getString("tname"));

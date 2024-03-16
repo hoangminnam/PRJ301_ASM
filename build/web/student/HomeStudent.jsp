@@ -14,7 +14,8 @@
     <body>
         <%@include file="../header_footer/header.jsp"%>
         <a href="timetable" style="text-decoration: none; margin-right: 5px">Timatbale</a>|
-        <a href="attendanceReport" style="text-decoration: none; margin-right: 5px">Attendance Report</a>
+        <a href="attendanceReport" style="text-decoration: none; margin-right: 5px">Attendance Report</a>|
+        <a href="markreport" style="text-decoration: none; margin-right: 5px">Attendance Report</a>
         <%@include file="../header_footer/footer.jsp"%>
     </body>
 </html>
