@@ -46,6 +46,7 @@
                     </tr>
                 </c:forEach>
             </table>
+            <c:set var="totalScore" value="0"/>
             <table>
                 <tr>
                     <th>GRADE ITEM</th>
@@ -53,6 +54,7 @@
                     <th>VALUE</th>
                     <th>COMMENT</th>
                 </tr>
+
                 <c:forEach items="${requestScope.listG}" var="g">
                     <tr>
                         <td>${g.ass.name}</td>
@@ -60,8 +62,16 @@
                         <td>${g.score}</td>
                         <td>${g.ass.comment}</td>
                     </tr>
+                    <c:set var="totalScore" value="${totalScore + (g.score * g.ass.weight) / 100}"/>
                 </c:forEach>
+
+                <tr>
+                    <td colspan="2" style="text-align:right;">Total:</td>
+                    <td colspan="2">${totalScore}</td>
+                </tr>
             </table>
+
+
         </div>
 
         <%@include file="../header_footer/footer.jsp"%>

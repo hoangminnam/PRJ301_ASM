@@ -12,15 +12,13 @@ package model;
 public class Specialty {
     private int id;
     private String name;
-    private Department department;
 
     public Specialty() {
     }
 
-    public Specialty(int id, String name, Department department) {
+    public Specialty(int id, String name) {
         this.id = id;
         this.name = name;
-        this.department = department;
     }
 
     public int getId() {
@@ -37,13 +35,5 @@ public class Specialty {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
     }
 }

@@ -10,6 +10,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import model.Account;
 import model.Feature;
@@ -50,55 +51,63 @@ public abstract class AuthenticationAndAuthenrizationController extends HttpServ
         }
         return account;
     }
-    
-        
-    private boolean isAuthorization(HttpServletRequest req){
+
+    private boolean isAuthorization(HttpServletRequest req) {
         Account account = (Account) req.getSession().getAttribute("account");
         boolean isAuthorizated = false;
-        if(account == null){
+        if (account == null) {
             return false;
         }
         String url = req.getServletPath();
         for (Feature f : account.getFeatures()) {
-            if(f.getUrl().equals(url)){
-                isAuthorizated =true;
+            if (f.getUrl().equals(url)) {
+                isAuthorizated = true;
                 break;
             }
         }
-        
+
         return isAuthorizated;
     }
-    
+
     protected abstract void doPost(HttpServletRequest req, HttpServletResponse resp, Account account)
-            throws ServletException, IOException; 
-    
+            throws ServletException, IOException;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Account account = getAuthenticatedAccount(req);
-        if(account!=null && isAuthorization(req))
-        {
+        if (account != null && isAuthorization(req)) {
             doPost(req, resp, account);
+        } else {
+            HttpSession session = req.getSession();
+            boolean isLoggedIn = (session != null && session.getAttribute("account") != null);
+            if (isLoggedIn) {
+                resp.getWriter().print("Access Denied!!");
+            } else {
+                resp.sendRedirect("../login");
+            }
+
         }
-        else
-        {
-            resp.getWriter().println("access denied!");
-        }
-    
+
     }
 
     protected abstract void doGet(HttpServletRequest req, HttpServletResponse resp, Account account)
-            throws ServletException, IOException; 
+            throws ServletException, IOException;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    Account account = getAuthenticatedAccount(req);
-        if(account!=null && isAuthorization(req))
-        {
+        Account account = getAuthenticatedAccount(req);
+        if (account != null && isAuthorization(req)) {
             doGet(req, resp, account);
-        }
-        else
-        {
-            resp.getWriter().println("access denied!");
+        } else {
+            HttpSession session = req.getSession();
+            boolean isLoggedIn = (session != null && session.getAttribute("account") != null);
+            if (isLoggedIn) {
+                resp.getWriter().print("Access Denied!!");
+            } else {
+                resp.sendRedirect("../login");
+            }
+
         }
     }
-    
+
 }
