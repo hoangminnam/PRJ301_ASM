@@ -34,7 +34,7 @@
                 line-height: 50px;
                 text-align: center;
                 border-bottom: 1px solid #ccc;
-                margin: 10px;
+                margin: 20px;
                 padding-bottom: 10px;
                 padding-right: 10px;
             }

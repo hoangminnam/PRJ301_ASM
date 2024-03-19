@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homeLecturer
-    Created on : Mar 9, 2024, 10:22:53 PM
+    Document   : search
+    Created on : Mar 19, 2024, 10:21:59 PM
     Author     : hoang
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>JSP Page</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>$(document).ready(function () {
                 $('#searchButton').click(function () {
@@ -30,13 +30,12 @@
         </script>
     </head>
     <body>
-        <%@include file="../header_footer/header.jsp"%>
-        <a href="timetable" style="text-decoration: none; margin-right: 5px">Timatbale</a>|
-        <a href="lession_today" style="text-decoration: none; margin-left: 5px">Take Attendance Today's</a>
-        <br>
+        <h1>Hello World!</h1>
+    <body>
+        <h1>Search</h1>
         <input type="text" id="searchInput">
         <button id="searchButton">Search</button>
         <div id="searchResults"></div>
     </body>
-    <%@include file="../header_footer/footer.jsp"%>
+</body>
 </html>
