@@ -56,6 +56,10 @@
         <servlet-name>GradeTranscript</servlet-name>
         <servlet-class>controller.student.GradeTranscriptController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PageViews</servlet-name>
+        <servlet-class>controller.PageViewController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DepartmnetView</servlet-name>
         <url-pattern>/test/view</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>GradeTranscript</servlet-name>
         <url-pattern>/student/GradeTranscript</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PageViews</servlet-name>
+        <url-pattern>/pageview</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
